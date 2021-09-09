@@ -7,7 +7,7 @@ const axios = require('axios')
 
 const cheerio = require('cheerio')
 
-const port = 3000
+
 const e = require('express')
 
 const url = 'https://screenrant.com/movie-news/'
@@ -53,6 +53,6 @@ app.get('/', async (req,res) =>{
     res.json(a)
 })
 
-app.listen('3000',()=>{
+app.listen(process.env.PORT || 5000,()=>{
     console.log('connected to port 3000')
 })

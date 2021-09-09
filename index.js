@@ -6,6 +6,8 @@ const app = express()
 const axios = require('axios')
 
 const cheerio = require('cheerio')
+
+const port = process.env.PORT || 3000
 const e = require('express')
 
 const url = 'https://screenrant.com/movie-news/'
@@ -31,19 +33,14 @@ async function fetch (){
                     // details
                 } );
                 
-                // console.log(result)
-                // app.get('/',(req,res)=>{
-                //     res.send(result)
-                // })
+                
             })
 
         }).catch(err=>{
             console.log(err)
 
         })
-        // const html = res.data  
-
-        // const $ = cheerio.load(html)
+        
     }
     catch (err){
         console.log(err)

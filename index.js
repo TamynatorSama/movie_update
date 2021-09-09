@@ -7,7 +7,7 @@ const axios = require('axios')
 
 const cheerio = require('cheerio')
 
-const port = process.env.PORT || 3000
+const port = 3000
 const e = require('express')
 
 const url = 'https://screenrant.com/movie-news/'

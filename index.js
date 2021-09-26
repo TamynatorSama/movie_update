@@ -30,7 +30,6 @@ async function fetchMov (){
                     //link1
                 }) 
             })
-            console.log(upcomingMovies)
         })
     }
     catch(err){

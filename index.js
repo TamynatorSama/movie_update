@@ -26,8 +26,7 @@ async function fetchMov (){
                 upcomingMovies.push({
                     movTitle,
                     imgLink,
-                    date,
-                    //link1
+                    date
                 }) 
             })
         })

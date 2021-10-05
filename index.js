@@ -10,6 +10,32 @@ const e = require('express')
 
 const url = 'https://screenrant.com/movie-news/'
 const url2 = 'https://www.rottentomatoes.com/browse/upcoming' 
+const animeurl = "https://gogoanime.pe/"
+
+async function anime(){
+    let animeList = [];
+    try{
+            await axios.get(animeurl).then(res=>{
+            const animeHtml = res.data
+            const $anime = cheerio.load(animeHtml)
+            $anime(".items li").each((i,element)=>{
+                const imagePath = $anime(element).find("img").attr("src")
+                const title = $anime(element).find(".name a").text()
+                const episodes = $anime(element).find(".episode").text()
+                animeList.push({
+                    imagePath,
+                    title,
+                    episodes,
+                })
+            })
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
+    return animeList
+}
+
 
 async function fetchMov (){
     let upcomingMovies = [];
@@ -78,6 +104,10 @@ app.get('/', async (req,res) =>{
 app.get('/upcoming', async (req,res)=>{
     let b = await fetchMov()
     res.json(b)
+})
+app.get("/anime",async(req,res)=>{
+    let anim = await anime()
+    res.json(anim)
 })
 
 app.listen(process.env.PORT || 3000,()=>console.log(`connected to ${port}`))
